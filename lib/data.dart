@@ -6,7 +6,7 @@ class Document {
   Document() : _json = jsonDecode(documentJson);
 
   (String, {DateTime modified}) get metadata {
-    if (_json // Modify from here...
+    if (_json
         case {
           'metadata': {
             'title': String title,
@@ -16,7 +16,15 @@ class Document {
       return (title, modified: DateTime.parse(localModified));
     } else {
       throw const FormatException('Unexpected JSON');
-    } // to here.
+    }
+  }
+
+  List<Block> getBlocks() {
+    if (_json case {'blocks': List blocksJson}) {
+      return [for (final blockJson in blocksJson) Block.fromJson(blockJson)];
+    } else {
+      throw const FormatException('Unexpected JSON format');
+    }
   }
 }
 
@@ -34,6 +42,7 @@ class Block {
     }
   }
 }
+
 
 const documentJson = '''
 {
