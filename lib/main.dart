@@ -16,7 +16,8 @@ String formatDate(DateTime dateTime) {
     Duration(inDays: 1) => 'tomorrow',
     Duration(inDays: -1) => 'yesterday',
     Duration(inDays: final days) when days > 7 => '${days ~/ 7} weeks from now',
-    Duration(inDays: final days) when days < -7 => '${days.abs() ~/ 7} weeks ago',
+    Duration(inDays: final days) when days < -7 =>
+      '${days.abs() ~/ 7} weeks ago',
     Duration(inDays: final days, isNegative: true) => '${days.abs()} days ago',
     Duration(inDays: final days) => '$days days from now',
   };
@@ -49,7 +50,7 @@ class DocumentScreen extends StatelessWidget {
     final metadataRecord = document.metadata;
     final blocks = document.getBlocks();
     final formattedModified =
-        'Last modified ${DateFormat('yyyy-MM-dd HH:mm:ss').format(metadataRecord.modified)}';
+        'Last modified ${formatDate(metadataRecord.modified)}';
 
     return Scaffold(
       appBar: AppBar(
