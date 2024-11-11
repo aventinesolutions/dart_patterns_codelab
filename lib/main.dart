@@ -32,6 +32,7 @@ class DocumentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final metadataRecord = document.metadata;
+    final blocks = document.getBlocks();
     final formattedModified =
         'Last modified ${DateFormat('yyyy-MM-dd HH:mm:ss').format(metadataRecord.modified)}';
 
@@ -41,8 +42,14 @@ class DocumentScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Center(
-            child: Text(formattedModified),
+          Text(formattedModified),
+          Expanded(
+            child: ListView.builder(
+              itemCount: blocks.length,
+              itemBuilder: (context, index) {
+                return BlockWidget(block: blocks[index]);
+              },
+            ),
           ),
         ],
       ),
@@ -79,4 +86,3 @@ class BlockWidget extends StatelessWidget {
     );
   }
 }
-
