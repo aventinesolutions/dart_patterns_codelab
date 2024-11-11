@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'data.dart';
 
@@ -31,17 +32,17 @@ class DocumentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final metadataRecord = document.metadata;
+    final formattedModified =
+        'Last modified ${DateFormat('yyyy-MM-dd HH:mm:ss').format(metadataRecord.modified)}';
 
     return Scaffold(
       appBar: AppBar(
         title: Text(metadataRecord.$1),
       ),
-      body: const Column(
+      body: Column(
         children: [
           Center(
-            child: Text(
-              'Last modified ${metadataRecord.modified}',
-            ),
+            child: Text(formattedModified),
           ),
         ],
       ),
