@@ -2,13 +2,21 @@ import 'dart:convert';
 
 class Document {
   final Map<String, Object?> _json;
+
   Document() : _json = jsonDecode(documentJson);
 
   (String, {DateTime modified}) get metadata {
-    const title = 'Aventine Solutions Document';
-    final now = DateTime.now();
-
-    return (title, modified: now);
+    if (_json.containsKey('metadata')) {
+      // Modify from here...
+      final metadataJson = _json['metadata'];
+      if (metadataJson is Map) {
+        final title = metadataJson['title'] as String;
+        final localModified =
+            DateTime.parse(metadataJson['modified'] as String);
+        return (title, modified: localModified);
+      }
+    }
+    throw const FormatException('Unexpected JSON'); // to here.
   }
 }
 
