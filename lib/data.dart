@@ -71,7 +71,7 @@ const documentJson = '''
     },
     {
       "type": "p",
-      "text": ""
+      "text": "In 1930 werd de stop uit de trechter gehaald en kon het pek beginnen met stromen. Sindsdien vormt zich telkens langzaam een druppel die na een aantal jaren uiteindelijk valt."
     },
     {
       "type": "checkbox",
