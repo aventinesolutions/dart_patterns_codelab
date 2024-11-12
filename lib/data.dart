@@ -61,8 +61,8 @@ class CheckboxBlock extends Block {
 const documentJson = '''
 {
   "metadata": {
-    "title": "My Document",
-    "modified": "2023-05-10"
+    "title": "Aventine Solutions Document Repository",
+    "modified": "2031-10-31"
   },
   "blocks": [
     {
@@ -71,7 +71,7 @@ const documentJson = '''
     },
     {
       "type": "p",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      "text": ""
     },
     {
       "type": "checkbox",
